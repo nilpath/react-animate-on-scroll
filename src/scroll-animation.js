@@ -84,7 +84,8 @@ export default class ScrollAnimation extends Component {
 
   getVisibility() {
     const elementTop = this.getElementTop(this.node) - this.getElementTop(this.scrollableParent);
-    const elementBottom = elementTop + this.node.clientHeight;
+    const clientHeight = this.node ? this.node.clientHeight : 0;
+    const elementBottom = elementTop + clientHeight;
     return {
       inViewport: this.inViewport(elementTop, elementBottom),
       onScreen: this.onScreen(elementTop, elementBottom)
